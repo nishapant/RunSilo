@@ -1,0 +1,185 @@
+.genderPic{
+     width: 25px;
+     height: 25px;
+ }
+#navBar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+}
+
+.tab a{
+    text-decoration: none;
+    color:#00CED1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    margin: 200px 50px 200px 50px;
+}
+
+li a:hover {
+    color:#00688B;
+}
+li {
+    display: inline;
+    width: 33%;
+    height: 50px;
+}
+button{
+    font-family: 'Lato', sans-serif;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    background: white;
+    border: lightgrey thin solid;
+}
+
+td{
+    padding: 13px 10px 13px 10px;
+    width: 650px;
+}
+
+#bmiPicture{
+    display: none;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.intro , #div {
+    display: none;
+}
+#blankResults, #caution , #reminder{
+    font-size: 15px;
+    color:#FA4B54;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+#results{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align:center;
+}
+.intro{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+#inputBox{
+    padding: 30px 30px 30px 30px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    width:600px;
+    background: #EBEDF0;
+}
+a.runsiloHeader{
+    font-family: 'Roboto', sans-serif;
+    color: #3EC271;
+    font-size: 40px;
+    line-height:1.5;
+    text-decoration: none;
+}
+body, html{
+    width: 100%;
+}
+#unitParagraph , #weightParagraph , #unit , #calculatebmi , #bmi , #yourBMI , #height , #weight , #bmiChart{
+    display: inline;
+    font-family: 'Lato', sans-serif;
+}
+
+#yourBMI{
+    font-size: 23px;
+}
+form{
+    font-family: 'Lato', sans-serif;
+    background: #EBEDF0;
+    width: 500px;
+    padding: 30px 30px 30px 30px;
+    border-radius: 8px;
+    font-size:15px;
+    line-height: 200%;
+    margin: 0 auto;
+}
+
+body{
+  margin: 0 50px 0 50px;
+}
+.header{
+    font-size: 15px;
+    font-weight: bold;
+}
+#span1{
+    width: 50px;
+    display:inline-block;
+}
+.span2{
+    width: 26px;
+    display:inline-block;
+}
+.center{
+    text-align: center;
+}
+input{
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    border: lightgray thin solid;
+}
+select{
+    padding:  5px 10px 5px 10px;
+    border-radius: 5px;
+}
+#span3{
+    width: 85px;
+    display:inline-block;
+}
+#div{
+    width: 600px;
+    background: #EBEDF0;
+    padding: 30px 30px 30px 30px;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+#hours,#hours2 ,#minutes, #minutes2, #seconds, #seconds2{
+    height: 70px;
+    width: 50px;
+    padding: 10px;
+    font-size: 40px;
+    text-align: center;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { /*taken from css-tricks*/
+    -webkit-appearance: none;
+    margin: 0;
+}
+.spacer{
+    width: 30px;
+    display: inline-block;
+}
+.names{
+    font-size: 15px;
+    display: inline-block;
+}
+#spacer1{
+    width: 60px;
+    display: inline-block;
+}
+.spacer2 {
+    width: 120px;
+    display: inline-block;
+}
+#back{
+    display:none;
+}
+#units , #units2{
+    font-family: 'Roboto', 'sans-serif';
+    display: inline-block;
+    font-size: 15px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RunSilo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="resources/iconNew.png" />
+    <link rel="stylesheet" type="text/css" href="stylesheet2.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <script>
+        var total; //this is in minutes
+        var newDistanceTime;
+        var distanceOneOverTwo;
+        var decimal;
+        var measurement;
+        // Using the Peter Riegel formula, a prediction of a reasonable time to run a distance is made
+        function findTimes(hours,hours2,minutes,minutes2,seconds,seconds2,amount,newDistance){
+            change();
+            document.getElementById("inputBox").style.display = "none";
+            document.getElementById("title").innerHTML ="Predicted Pace for "  + newDistance + " " + measurement + ":"
+            seconds = seconds.toString() + seconds2.toString();
+            minutes = minutes.toString() + minutes2.toString();
+            hours = hours.toString() + hours2.toString();
+            seconds = seconds /60;
+            minutes = Number(hours * 60) + Number(minutes);
+            total = Number(minutes) + Number(seconds);
+            distanceOneOverTwo = newDistance/amount;
+            newDistanceTime = total * Math.pow(distanceOneOverTwo,1.06) ;
+            decimal = newDistanceTime % 1;
+            decimal = decimal * 60;
+            seconds = Math.round(10*decimal)/10;
+            minutes = Math.floor(newDistanceTime);
+            document.getElementById("results").innerHTML = minutes + " minutes and " + seconds + " seconds";
+        }
+        function change() {
+            e = document.getElementById("unit");
+            unit = e.options[e.selectedIndex].text;
+            if (unit == "Imperial") {
+                document.getElementById("units").innerHTML = "Miles";
+                document.getElementById("units2").innerHTML = "Miles";
+                measurement = "Miles"
+            }
+            if (unit == "Metric") {
+                document.getElementById("units").innerHTML = "Meters";
+                document.getElementById("units2").innerHTML = "Meters";
+                measurement = "Meters"
+
+            }
+        }
+    </script>
+</head>
+<body>
+<p ><a href="index.html" class="runsiloHeader">RunSilo</a> </p>
+<ul id="navBar">
+    <li class="tab"><a href="workoutplanNew.html">Find Your Plan</a></li>
+    <li class="tab"><a href="racePredictor.html">Pace Predictor</a></li>
+    <li class="tab"><a href="paceCalc.html">Pace Calculator</a></li>
+</ul>
+<br><br>
+<p class="title" id="title">Input Data About A Recent Race</p>
+<form id="inputBox">
+    <label class="title">Pace Predictor</label>
+    <br>
+    <label class="header">Time</label>
+    <br>
+    <label>
+        <input type="number" min="0" max="9" id="hours" placeholder="0">
+        <input type="number" min="0" max="9" id="hours2" placeholder="0">
+    </label>
+    <span class="spacer"></span>
+    <label>
+        <input type="number" min="0" max="9" id="minutes" placeholder="0">
+        <input type="number" min="0" max="9" id="minutes2" placeholder="0">
+    </label>
+    <span class="spacer"></span>
+    <label>
+        <input type="number" min="0" max="9" id="seconds" placeholder="0">
+        <input type="number" min="0" max="9" id="seconds2" placeholder="0">
+    </label>
+    <br>
+    <span id="spacer1"></span>
+    <p class="names">Hours</p>
+    <span class="spacer2"></span>
+    <p class="names">Minutes</p>
+    <span class="spacer2"></span>
+    <p class="names">Seconds</p>
+    <br><br>
+    <label class="header">Units</label>
+    <label>
+        <select id="unit" onchange="change()">
+            <option value="1">Imperial</option>
+            <option value="2">Metric</option>
+        </select>
+    </label>
+    <br>
+    <label class="header">Amount Ran</label>
+    <label>
+        <input type="number" id="amount" min="1" max="99">
+    </label>
+    <p id="units">Miles</p>
+    <br>
+    <label class="header">New Distance To Be Calculated</label>
+    <label>
+        <input type="number" id="newDistance" min="1" max="99">
+    </label>
+    <p id="units2">Miles</p>
+    <div class="center">
+        <button class="button" type="button" id="calculatePace" onclick="findTimes(document.getElementById('hours').value,
+    document.getElementById('hours2').value, document.getElementById('minutes').value, document.getElementById('minutes2').value,
+     document.getElementById('seconds').value ,document.getElementById('seconds2').value ,document.getElementById('amount').value ,document.getElementById('newDistance').value)">
+            Calculate Times</button>
+    </div>
+
+    <p id="reminder"></p>
+</form>
+<p id="results"></p>
+</body>
+</html>

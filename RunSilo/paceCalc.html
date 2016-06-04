@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Runsilo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="resources/iconNew.png" />
+    <link rel="stylesheet" type="text/css" href="stylesheet2.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <script>
+        var total;
+        var decimal;
+        //  This function finds calculates the mile pace of the runner after they enter in their information.
+        function findPace(hours,hours2,minutes,minutes2,seconds,seconds2,amount){
+            var e = document.getElementById("unit");
+            var measurement = e.options[e.selectedIndex].text;
+            if (hours == '' && minutes == '' && seconds == ''){  // If the user did not enter anything into the hours, minutes or seconds, then the program will not let the user proceed until they enter in a time.
+                document.getElementById("reminder").innerHTML = "Don't forget to enter in a time!";
+            }
+            else if(amount == ''){  // If the user did not enter anything into the miles input, then the program will not let the user advance until they enter in mileage
+                document.getElementById("reminder").innerHTML = "Don't forget to enter in the number of miles you ran!";
+            }
+            else if(measurement == "Miles"){ // After the user meets both criteria of having a time and amount of miles, the program will continue and calculates the minutes and seconds per mile.
+                document.getElementById("inputBox").style.display = "none";
+                document.getElementById("title").innerHTML ="Pace Calculated:";
+                minutes = minutes.toString() + minutes2.toString();
+                seconds = seconds.toString() + seconds2.toString();
+                hours = hours.toString() + hours2.toString();
+                seconds = seconds /60;
+                minutes = Number(hours * 60) + Number(minutes);
+                total = Number(minutes) + Number(seconds);
+                total = total / amount;
+                decimal = total % 1;
+                decimal = decimal * 60;
+                seconds = Math.round(100*decimal)/100;
+                minutes = Math.floor(total);
+                document.getElementById("results").innerHTML = minutes +" minutes and "+ seconds + " seconds per mile";
+            }
+            else if(measurement == "Kilometers"){
+                document.getElementById("inputBox").style.display = "none";
+                document.getElementById("title").innerHTML ="Pace Calculated:";
+                minutes = minutes.toString() + minutes2.toString();
+                seconds = seconds.toString() + seconds2.toString();
+                hours = hours.toString() + hours2.toString();
+                seconds = seconds /60;
+                minutes = Number(hours * 60) + Number(minutes);
+                total = Number(minutes) + Number(seconds);
+                total = total / amount;
+                decimal = total % 1;
+                decimal = decimal * 60;
+                seconds = Math.round(100*decimal)/100;
+                minutes = Math.floor(total);
+                document.getElementById("results").innerHTML = minutes +" minutes and "+ seconds + " seconds per kilometer";
+            }
+        }
+
+    </script>
+</head>
+<body>
+<p ><a href="index.html" class="runsiloHeader">RunSilo</a> </p>
+<ul id="navBar">
+    <li class="tab"><a href="workoutplanNew.html">Find Your Plan</a></li>
+    <li class="tab"><a href="racePredictor.html">Pace Predictor</a></li>
+    <li class="tab"><a href="paceCalc.html">Pace Calculator</a></li>
+</ul>
+<br><br>
+<p class="title" id="title">Input Data About Your Recent Run</p>
+<form id="inputBox">
+    <label class="title">Pace Calculator</label>
+    <br>
+    <label class="header">Time</label>
+    <br>
+    <label>
+        <input type="number" min="0" max="9" id="hours" placeholder="0">
+        <input type="number" min="0" max="9" id="hours2" placeholder="0">
+    </label>
+    <span class="spacer"></span>
+    <label>
+        <input type="number" min="0" max="9" id="minutes" placeholder="0">
+        <input type="number" min="0" max="9" id="minutes2" placeholder="0">
+    </label>
+    <span class="spacer"></span>
+    <label>
+        <input type="number" min="0" max="9" id="seconds" placeholder="0">
+        <input type="number" min="0" max="9" id="seconds2" placeholder="0">
+    </label>
+    <br>
+    <span id="spacer1"></span>
+    <p class="names">Hours</p>
+    <span class="spacer2"></span>
+    <p class="names">Minutes</p>
+    <span class="spacer2"></span>
+    <p class="names">Seconds</p>
+    <br><br>
+    <label class="header">Amount Ran</label>
+    <label>
+        <input type="number" id="amount" min="1" max="99">
+        <select id="unit">
+            <option value="1">Miles</option>
+            <option value="2">Kilometers</option>
+        </select>
+    </label>
+    <br>
+    <div class="center">
+        <button class="button" type="button" id="calculatePace"onclick="findPace(document.getElementById('hours').value,
+    document.getElementById('hours2').value, document.getElementById('minutes').value, document.getElementById('minutes2').value,
+     document.getElementById('seconds').value ,document.getElementById('seconds2').value ,document.getElementById('amount').value)">
+            Calculate Pace</button>
+    </div>
+
+    <p id="reminder"></p>
+</form>
+<p id="results"></p>
+</body>
+</html>

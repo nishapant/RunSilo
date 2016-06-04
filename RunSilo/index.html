@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RunSilo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="resources/iconNew.png" />
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <script>
+        // This function changes the width and height of the picture according to the size of the screen. It sets up a proportion according to what the width of the user's screen is. The reason for this is so that the picture doesn't get distorted and stretched out. It will always look how it's supposed to now.
+        function setPicture() {
+            var width = window.innerWidth;  // This is getting the width of the browser's screen and setting it equal to the width of the picture/
+            var pictureWidth =4240 ;
+            var pictureHeight = 1056;
+            var height =  (width*pictureHeight)/pictureWidth;  // This is the proportion being set up to solve for what the height of the picture should be based on the width of the picture.
+            // Lines 19 and 20 are setting the new width and height of the picture.
+            document.getElementById("run").width = width;
+            document.getElementById("run").height = height;
+        }
+    </script>
+</head>
+<body onresize="setPicture()", onload="setPicture()">
+<p class="header">RunSilo</p>
+<img src="resources/background.jpg" alt="runners" id="run">
+<br><br>
+<div id="wrapper">
+    <ul id="navBar">
+        <li class="tab"><a href="workoutplanNew.html">Find Your Plan</a></li>
+        <span class="span"></span>
+        <li class="tab" id="floatRight"><a href="paceCalc.html">Pace Calculator</a></li>
+        <li class="tab" id="center"><a href="racePredictor.html">Pace Predictor</a></li>
+    </ul>
+    <br>
+    <div id="divParagraph1">
+        <p class="paragraph" id="plan">RunSilo takes your fitness data and
+            determines an optimal running plan for you. No need to hire a coach anymore.</p>
+    </div>
+    <span class="span"></span>
+    <div id="divParagraph3">
+        <p class="paragraph" id="predictor">Use this race predictor to decide what a good pace for your next race is.</p>
+    </div>
+    <div id="divParagraph2">
+        <p class="paragraph" id="pace">Need help calculating your pace? Using RunSilo, you can calculate your time per
+            mile.</p>
+    </div>
+
+</div>
+</body>
+</html>
